@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/subdomains/mario/wc/wot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../../../../js/html5shiv.min.js"></script>
+  <script src="../../../../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../../../../index.html"></a></li>
+        <li><a href="../../../../../index.html">var</a></li>
+        <li><a href="../../../../index.html">www</a></li>
+        <li><a href="../../../index.html">subdomains</a></li>
+        <li><a href="../../index.html">mario</a></li>
+        <li><a href="../index.html">wc</a></li>
+        <li><a href="index.html">wot</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="wot.php.html#16">WOT</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#3">user_tank</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#3">tank</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#3">recruit</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#3">strat</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#3">user</a></td><td class="text-right">20%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#5">base_object</a></td><td class="text-right">45%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="wot.php.html#16">WOT</a></td><td class="text-right">21756</td></tr>
+       <tr><td><a href="classes/recruit.php.html#3">recruit</a></td><td class="text-right">812</td></tr>
+       <tr><td><a href="classes/strat.php.html#3">strat</a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="classes/tank.php.html#3">tank</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#3">user_tank</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="classes/user.php.html#3">user</a></td><td class="text-right">130</td></tr>
+       <tr><td><a href="classes/base_object.php.html#5">base_object</a></td><td class="text-right">44</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="wot.php.html#262"><abbr title="WOT::scrapeWotlabsTanks">scrapeWotlabsTanks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#200"><abbr title="WOT::updateTanks">updateTanks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#282"><abbr title="WOT::updateWN8">updateWN8</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#328"><abbr title="WOT::getRecruiters">getRecruiters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#336"><abbr title="WOT::getSources">getSources</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#332"><abbr title="WOT::getStatuses">getStatuses</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#112"><abbr title="WOT::getClanMembers">getClanMembers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#102"><abbr title="WOT::getPersonalData">getPersonalData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#62"><abbr title="user_tank::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#53"><abbr title="user_tank::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#32"><abbr title="WOT::db">db</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#41"><abbr title="WOT::getUser">getUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#55"><abbr title="WOT::colorCoding">colorCoding</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#340"><abbr title="WOT::getGameModes">getGameModes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#346"><abbr title="WOT::getTiers">getTiers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#508"><abbr title="WOT::getEncyclopediaVehicles">getEncyclopediaVehicles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#498"><abbr title="WOT::getTanksList">getTanksList</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#515"><abbr title="WOT::getTank">getTank</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#524"><abbr title="WOT::getPlayerTierTanks">getPlayerTierTanks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#544"><abbr title="WOT::select">select</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#482"><abbr title="WOT::getPlayerTanks">getPlayerTanks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#472"><abbr title="WOT::getPlayerID">getPlayerID</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#359"><abbr title="WOT::populateTankList">populateTankList</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#352"><abbr title="WOT::getCardinal">getCardinal</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#401"><abbr title="WOT::updateRegisteredUsersTanks">updateRegisteredUsersTanks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#435"><abbr title="WOT::myCurl">myCurl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="wot.php.html#452"><abbr title="WOT::getMaps">getMaps</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#44"><abbr title="user_tank::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#17"><abbr title="user_tank::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#110"><abbr title="recruit::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#86"><abbr title="recruit::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#134"><abbr title="recruit::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#19"><abbr title="strat::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#47"><abbr title="strat::get_maps_by_name">get_maps_by_name</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#34"><abbr title="strat::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#73"><abbr title="recruit::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#48"><abbr title="recruit::get_recruits">get_recruits</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#63"><abbr title="base_object::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#51"><abbr title="base_object::q">q</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#67"><abbr title="base_object::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#71"><abbr title="base_object::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/recruit.php.html#26"><abbr title="recruit::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#64"><abbr title="strat::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#85"><abbr title="strat::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#60"><abbr title="user::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#42"><abbr title="user::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#72"><abbr title="user::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#86"><abbr title="user::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#9"><abbr title="user_tank::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/user.php.html#29"><abbr title="user::get_all">get_all</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#78"><abbr title="tank::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#15"><abbr title="tank::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/strat.php.html#104"><abbr title="strat::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#28"><abbr title="tank::get">get</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#46"><abbr title="tank::add">add</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/tank.php.html#61"><abbr title="tank::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="classes/base_object.php.html#10"><abbr title="base_object::__constrct">__constrct</abbr></a></td><td class="text-right">65%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="wot.php.html#55"><abbr title="WOT::colorCoding">colorCoding</abbr></a></td><td class="text-right">3306</td></tr>
+       <tr><td><a href="wot.php.html#112"><abbr title="WOT::getClanMembers">getClanMembers</abbr></a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="classes/recruit.php.html#26"><abbr title="recruit::__construct">__construct</abbr></a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="wot.php.html#200"><abbr title="WOT::updateTanks">updateTanks</abbr></a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="classes/strat.php.html#19"><abbr title="strat::__construct">__construct</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="classes/tank.php.html#15"><abbr title="tank::__construct">__construct</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="wot.php.html#544"><abbr title="WOT::select">select</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="wot.php.html#282"><abbr title="WOT::updateWN8">updateWN8</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#17"><abbr title="user_tank::get">get</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="wot.php.html#359"><abbr title="WOT::populateTankList">populateTankList</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="classes/user_tank.php.html#9"><abbr title="user_tank::__construct">__construct</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="classes/recruit.php.html#48"><abbr title="recruit::get_recruits">get_recruits</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="wot.php.html#401"><abbr title="WOT::updateRegisteredUsersTanks">updateRegisteredUsersTanks</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="wot.php.html#524"><abbr title="WOT::getPlayerTierTanks">getPlayerTierTanks</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="classes/base_object.php.html#10"><abbr title="base_object::__constrct">__constrct</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="wot.php.html#435"><abbr title="WOT::myCurl">myCurl</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="wot.php.html#482"><abbr title="WOT::getPlayerTanks">getPlayerTanks</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="classes/strat.php.html#47"><abbr title="strat::get_maps_by_name">get_maps_by_name</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="wot.php.html#452"><abbr title="WOT::getMaps">getMaps</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#352"><abbr title="WOT::getCardinal">getCardinal</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#346"><abbr title="WOT::getTiers">getTiers</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#41"><abbr title="WOT::getUser">getUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/strat.php.html#34"><abbr title="strat::get">get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/recruit.php.html#73"><abbr title="recruit::get">get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/base_object.php.html#51"><abbr title="base_object::q">q</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/tank.php.html#28"><abbr title="tank::get">get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/user.php.html#29"><abbr title="user::get_all">get_all</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#262"><abbr title="WOT::scrapeWotlabsTanks">scrapeWotlabsTanks</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#32"><abbr title="WOT::db">db</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="classes/user.php.html#42"><abbr title="user::get">get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="wot.php.html#340"><abbr title="WOT::getGameModes">getGameModes</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.2.4</a> using <a href="http://php.net/" target="_top">PHP 5.6.16</a> and <a href="https://phpunit.de/">PHPUnit 4.8.17</a> at Mon Jan 18 12:49:22 EST 2016.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,0,0,1,0,1,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([56,0,0,0,0,0,0,1,0,0,0,1], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[45.945945945946,14,"<a href=\"classes\/base_object.php.html#5\">base_object<\/a>"],[0,28,"<a href=\"classes\/recruit.php.html#3\">recruit<\/a>"],[0,20,"<a href=\"classes\/strat.php.html#3\">strat<\/a>"],[0,14,"<a href=\"classes\/tank.php.html#3\">tank<\/a>"],[20,15,"<a href=\"classes\/user.php.html#3\">user<\/a>"],[0,12,"<a href=\"classes\/user_tank.php.html#3\">user_tank<\/a>"],[0,147,"<a href=\"wot.php.html#16\">WOT<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[65.384615384615,9,"<a href=\"classes\/base_object.php.html#10\">base_object::__constrct<\/a>"],[0,2,"<a href=\"classes\/base_object.php.html#51\">base_object::q<\/a>"],[0,1,"<a href=\"classes\/base_object.php.html#63\">base_object::update<\/a>"],[0,1,"<a href=\"classes\/base_object.php.html#67\">base_object::add<\/a>"],[0,1,"<a href=\"classes\/base_object.php.html#71\">base_object::delete<\/a>"],[0,19,"<a href=\"classes\/recruit.php.html#26\">recruit::__construct<\/a>"],[0,4,"<a href=\"classes\/recruit.php.html#48\">recruit::get_recruits<\/a>"],[0,2,"<a href=\"classes\/recruit.php.html#73\">recruit::get<\/a>"],[0,1,"<a href=\"classes\/recruit.php.html#86\">recruit::add<\/a>"],[0,1,"<a href=\"classes\/recruit.php.html#110\">recruit::update<\/a>"],[0,1,"<a href=\"classes\/recruit.php.html#134\">recruit::delete<\/a>"],[0,12,"<a href=\"classes\/strat.php.html#19\">strat::__construct<\/a>"],[0,2,"<a href=\"classes\/strat.php.html#34\">strat::get<\/a>"],[0,3,"<a href=\"classes\/strat.php.html#47\">strat::get_maps_by_name<\/a>"],[0,1,"<a href=\"classes\/strat.php.html#64\">strat::add<\/a>"],[0,1,"<a href=\"classes\/strat.php.html#85\">strat::update<\/a>"],[0,1,"<a href=\"classes\/strat.php.html#104\">strat::delete<\/a>"],[0,9,"<a href=\"classes\/tank.php.html#15\">tank::__construct<\/a>"],[0,2,"<a href=\"classes\/tank.php.html#28\">tank::get<\/a>"],[0,1,"<a href=\"classes\/tank.php.html#46\">tank::add<\/a>"],[0,1,"<a href=\"classes\/tank.php.html#61\">tank::update<\/a>"],[0,1,"<a href=\"classes\/tank.php.html#78\">tank::delete<\/a>"],[100,8,"<a href=\"classes\/user.php.html#14\">user::__construct<\/a>"],[0,2,"<a href=\"classes\/user.php.html#29\">user::get_all<\/a>"],[0,2,"<a href=\"classes\/user.php.html#42\">user::get<\/a>"],[0,1,"<a href=\"classes\/user.php.html#60\">user::add<\/a>"],[0,1,"<a href=\"classes\/user.php.html#72\">user::update<\/a>"],[0,1,"<a href=\"classes\/user.php.html#86\">user::delete<\/a>"],[0,4,"<a href=\"classes\/user_tank.php.html#9\">user_tank::__construct<\/a>"],[0,5,"<a href=\"classes\/user_tank.php.html#17\">user_tank::get<\/a>"],[0,1,"<a href=\"classes\/user_tank.php.html#44\">user_tank::add<\/a>"],[0,1,"<a href=\"classes\/user_tank.php.html#53\">user_tank::update<\/a>"],[0,1,"<a href=\"classes\/user_tank.php.html#62\">user_tank::delete<\/a>"],[0,2,"<a href=\"wot.php.html#32\">WOT::db<\/a>"],[0,2,"<a href=\"wot.php.html#41\">WOT::getUser<\/a>"],[0,57,"<a href=\"wot.php.html#55\">WOT::colorCoding<\/a>"],[0,1,"<a href=\"wot.php.html#102\">WOT::getPersonalData<\/a>"],[0,20,"<a href=\"wot.php.html#112\">WOT::getClanMembers<\/a>"],[0,15,"<a href=\"wot.php.html#200\">WOT::updateTanks<\/a>"],[0,2,"<a href=\"wot.php.html#262\">WOT::scrapeWotlabsTanks<\/a>"],[0,7,"<a href=\"wot.php.html#282\">WOT::updateWN8<\/a>"],[0,1,"<a href=\"wot.php.html#328\">WOT::getRecruiters<\/a>"],[0,1,"<a href=\"wot.php.html#332\">WOT::getStatuses<\/a>"],[0,1,"<a href=\"wot.php.html#336\">WOT::getSources<\/a>"],[0,2,"<a href=\"wot.php.html#340\">WOT::getGameModes<\/a>"],[0,2,"<a href=\"wot.php.html#346\">WOT::getTiers<\/a>"],[0,2,"<a href=\"wot.php.html#352\">WOT::getCardinal<\/a>"],[0,5,"<a href=\"wot.php.html#359\">WOT::populateTankList<\/a>"],[0,4,"<a href=\"wot.php.html#401\">WOT::updateRegisteredUsersTanks<\/a>"],[0,3,"<a href=\"wot.php.html#435\">WOT::myCurl<\/a>"],[0,2,"<a href=\"wot.php.html#452\">WOT::getMaps<\/a>"],[0,1,"<a href=\"wot.php.html#472\">WOT::getPlayerID<\/a>"],[0,3,"<a href=\"wot.php.html#482\">WOT::getPlayerTanks<\/a>"],[0,1,"<a href=\"wot.php.html#498\">WOT::getTanksList<\/a>"],[0,1,"<a href=\"wot.php.html#508\">WOT::getEncyclopediaVehicles<\/a>"],[0,1,"<a href=\"wot.php.html#515\">WOT::getTank<\/a>"],[0,4,"<a href=\"wot.php.html#524\">WOT::getPlayerTierTanks<\/a>"],[0,7,"<a href=\"wot.php.html#544\">WOT::select<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

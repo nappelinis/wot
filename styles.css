@@ -1,0 +1,195 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 30, 2015, 3:52:39 PM
+    Author     : mwenig
+*/
+
+fieldset {
+	width: 225px;
+	height: 200px;
+	align: center;
+	float: left;
+}
+
+/*Winrate colors*/
+.wr_beginner { background: #BAAAAD; }
+.wr_basic { background: #f11919; color: white; }
+.wr_below_averag { background: #ff8a00; color: white;}
+.wr_average { background: #e6df27; color: white;}
+.wr_above_average { background: #77e812; color: white;}
+.wr_good { background: #459300; color: white;}
+.wr_very_good { background: #2ae4ff; color: white;}
+.wr_great { background: #00a0b8; color: white;}
+.wr_unicum { background: #c64cff; color: white;}
+.wr_super_unicum { background: #8225ad; color: white;}
+
+/*Frags per Battle colors*/
+.fpb_very_bad { background: #FE0E00;}
+.fpb_bad { background: #FE7903;}
+.fpb_normal { background: #F8F400; }
+.fpb_good { background: #60FF00; }
+.fpb_very_good { background: #02C9B3;}
+.fpb_unique { background: #D042F3; }
+
+/*WN8*/
+.wn8_very_bad { background: #930D0D; color: white;}
+.wn8_bad { background: #CD3333; color: white;}
+.wn8_below_average { background: #CC7A00; color: white;}
+.wn8_average { background: #CCB800; color: white;}
+.wn8_above_average { background: #849B24; color: white;}
+.wn8_good { background: #4D7326; color: white;}
+.wn8_very_good { background: #4099BF; color: white;}
+.wn8_great { background: #3972C6; color: white;}
+.wn8_unicum { background: #793DB6; color: white;}
+.wn8_super_unicum { background: #401070; color: white;}
+
+/*Status flags */
+.member { background: #3972C6; color: white; }
+.denied { background: darkorange; color: white; }
+.accepted { background: #4099BF; color: white; }
+.new { background: #849B24; color: white; }
+.joined_other { background: #930D0D; color: white; }
+
+.bold { font-weight: bold;}
+
+
+//OLD
+.goodkillratio {color:green; font-weight: bold; }
+.okkillratio {color: orange;}
+.badkillratio {color: red;}
+
+
+.premium { background-color: yellow;}
+
+body {
+	background-color: #e0e0e0;
+}
+
+.button-link {
+	min-width: 150px;
+    padding: 10px 15px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 2px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-link:hover, .button-link:focus {
+    background: #356094;
+    border: solid 1px #2A4E77;
+    text-decoration: none;
+}
+
+
+
+table a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+table a:visited {
+	color: #999999;
+	font-weight:bold;
+	text-decoration:none;
+}
+table a:active,
+table a:hover {
+	color: #bd5a35;
+	text-decoration:underline;
+}
+table {
+	min-width: 85%;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:12px;
+	//text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	margin:20px;
+	border:#ccc 1px solid;
+
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+}
+table th {
+	padding:21px 25px 22px 25px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+	text-align: center;
+	
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child {
+	text-align: left;
+	padding-left:20px;
+}
+table tr:first-child th:first-child {
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+}
+table tr:first-child th:last-child {
+	-moz-border-radius-topright:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+}
+table tr {
+	text-align: center;
+	padding-left:20px;
+}
+table td:first-child {
+	text-align: left;
+	padding-left:20px;
+	border-left: 0;
+}
+table td {
+	padding:18px;
+	border-top: 1px solid #ffffff;
+	border-bottom:1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+
+	background: #fbfbfb;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+	background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+	border-bottom:0;
+}
+table tr:last-child td:first-child {
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child {
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+/*
+table tr:hover td {
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+}
+*/

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-65843247-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-app="myApp" ng-controller="playerCtrl">
+
+	<div style="position: absolute; left: 86%">
+		<fieldset style="margin-top: 100px;">
+			<legend style="font-weight: bold;">What is this?</legend>
+			This rather simple tool does the following for you. It interfaces with Wargamings API to retrieve all the tanks 
+			in your garage in order to allow you to pick a random tank for your next battle. (as well as show you all your tanks and some information about them).
+		</fieldset>
+		<fieldset>
+			<legend style="font-weight: bold;">How does it work?</legend>
+			Once you have authenticated this application with Wargaming (by logging in on their site with your credentials), they allow the application to pull 
+			player specific information. In this particular case, we are interested in retrieving your list of tanks available in your garage. 
+		</fieldset>
+		<fieldset>
+			<legend style="font-weight: bold;">Can others see my tanks?</legend>
+			<span style="font-weight:bold;">No.</span> Since you log in with your wargaming credentials, only you have access to your tanks. The future might bring the option to allow others to view your tank
+			list but in order for this to function we would need to provide the other player with access to your access_token (which btw. is only valid for this application).
+		</fieldset>
+		<fieldset>
+			<legend style="font-weight: bold;">Contact</legend>
+			Feedback? Questions? Concerns? Future Feature Requests? <a href="mailto:nappelinis@gmail.com">Email me</a>
+		</fieldset>
+	</div>
+	
+	
+	
+	<!-- Prior to AUTHENTICATION -->
+	<div ng-show="!playername">
+		<br />
+		<button ng-click="authenticate()" class="button-link">Authenticate with WARGAMING.NET</button>
+	</div>
+
+	<div ng-show="playername">
+		<div>
+			<button style="margin-left: 25px; margin-top: 10px;" ng-click="randomTank()" class="button-link">Random Tank</button><br />
+			<!--<button ng-click="randomTank(); selectedTank=false" class="button-link">My Tanks</button><br />-->
+
+			<div style="position: absolute; right: 100px;">
+				<div>Player:&nbsp;&nbsp;&nbsp; {{ playername }}</div>
+				<div>Account: {{ account_id }}</div>
+			</div>
+
+			<div ng-show="selectedTank">
+				<br />
+				<table>
+					<tr>
+						<th>Name</th>						
+						<th>Image</th>
+						<th>Icon</th>
+						<th>Type</th>
+						<th>Tier</th>
+						<th>Mastery</th>
+						<th>MaxFrags</th>
+						<th>Frags</th>
+						<th>Battles</th>
+						<th>Wins</th>
+						<th>Losses</th>
+						<th>Draws</th>
+						<th>Frags/Battle</th>
+						<th>WR</th>
+						<th>Premium</th>
+						<th>WN8</th>
+					</tr>
+					<!-- random tank -->
+					<tr>
+						<td style="font-weight: bold;">{{ selectedTank.short_name_i18n }}</td>
+						<td><img ng-src="{{ selectedTank.image_small }}" /></td>
+						<td><img ng-src="{{ selectedTank.contour_image }}"/></td>
+						<td>{{ resolveType(selectedTank.type_i18n) }}</td>
+						<td>{{ selectedTank.level }}</td>
+						<td><img width="25" ng-src="{{ resolveMasteryIcon(getPlayerTankById(selectedTank.tank_id).mark_of_mastery) }}"/></td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).max_frags }}</td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).all.frags }}</td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).all.battles }}</td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).all.wins }}</td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).all.losses }}</td>
+						<td>{{ getPlayerTankById(selectedTank.tank_id).all.draws }}</td>
+						<td>{{ ((playerTankInfo[0].all.frags / playerTankInfo[0].all.battles).toFixed(2)) }}</td>
+						<td style="font-weight: bold;" ng-class="colorCoding('winrate', resolveWinRatio(playerTankInfo[0].statistics.battles, playerTankInfo[0].statistics.wins))">{{ resolveWinRatio(playerTankInfo[0].statistics.battles, playerTankInfo[0].statistics.wins) }}</td>
+						<td>{{ resolvePremium(selectedTank.is_premium) }}</td>
+						<td>*someday</td>		
+					</tr>
+				</table>
+			</div>
+	
+			<br /><br />
+	
+			<div ng-show="playerTankList">
+				<input style="margin-left: 25px;" type="text" ng-model="searchText" placeholder="Name search" />
+				<input type="text" ng-model="searchTier" placeholder="Tier search" />
+				<input type="text" ng-model="searchType" placeholder="Type search(H,M,L,TD,SPG" />
+
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Image</th>
+						<th>Icon</th>
+						<th>Type</th>
+						<th>Tier</th>
+						<th>Mastery</th>
+						<th>MaxFrags</th>
+						<th>Frags</th>
+						<th title="Battles">B</th>
+						<th title="Wins">W</th>
+						<th title="Losses">L</th>
+						<th title="Draws">D</th>
+						<th title="Frags Per Battle">FPB</th>
+						<th>WR</th>
+						<th>Premium</th>
+						<th>WN8</th>
+					</tr>
+
+					<!-- PLAYER TANK LIST -->
+					<tr ng-repeat="tank in playerTankList | orderBy: '-tankInfo.level' | filter: search" >
+						<td style="font-weight:bold;">{{ tank.tankInfo.short_name_i18n }}</td>
+						<td><img ng-src="{{ tank.tankInfo.image_small }}" /></td>
+						<td><img ng-src="{{ tank.tankInfo.contour_image }}" /></td>	
+						<td>{{ tank.tankInfo.level }}</td>
+						<td>{{ resolveType(tank.tankInfo.type_i18n) }}</td>
+						<td><img width="25" ng-src="{{ resolveMasteryIcon(tank.mark_of_mastery) }}"></td>
+						<td>{{ tank.max_frags }}</td>
+						<td>{{ tank.all.frags }}</td>
+						<td>{{ tank.all.battles }}</td>
+						<td>{{ tank.all.wins }}</td>
+						<td>{{ tank.all.losses }}</td>
+						<td>{{ tank.all.draws }}</td>
+						<td style="font-weight: bold;" ng-class="colorCoding('fragsperbattle', ((tank.all.frags / tank.all.battles).toFixed(2)))">
+							{{ tank.all.battles > 0 && tank.all.frags > 0 ? (tank.all.frags / tank.all.battles).toFixed(2) : '0' }}
+						</td>
+						<td style="font-weight: bold;" ng-class="colorCoding('winrate', resolveWinRatio(tank.all.battles, tank.all.wins))">{{ resolveWinRatio(tank.all.battles, tank.all.wins) }}</td>
+						<td>{{ resolvePremium(tank.tankInfo.is_premium) }}</td>
+						<td>*someday*</td>
+
+					</tr>
+				</table>	
+			</div>	
+		</div>
+	</div>
+	
+	<script>
+
+
+
+	var app = angular.module('myApp', []);
+
+	app.run(function() {
+
+		function getPathObject(path) {
+
+			var object = {};
+			var chunk = path.split(/&/g);
+			chunk.forEach(function(item) {
+				console.log(item);
+				var pair = item.split('=');
+
+				object[pair[0]] = pair[1];
+			});
+			return object;
+		}
+
+		var path = window.location.search;
+		var search = getPathObject(path);
+		console.log(search);
+		if(search.access_token) {
+			window.localStorage.status = search.status;
+			window.localStorage.access_token = search.access_token;
+			window.localStorage.nickname = search.nickname;
+			window.localStorage.account_id = search.account_id;
+			window.localStorage.expires_at = search.expires_at;
+		}
+	})
+
+	app.controller('playerCtrl', function($scope, $http) {
+
+		//Statics
+		$scope.appID = '1f4885f3c3e0530a004dabb25013ba50';
+		$scope.returnUrl = 'mario.906.io/wc/wot/random.html';
+
+		// Sends user to wg authentication page
+		$scope.authenticate = function() {
+			window.location.assign("https://api.worldoftanks.com/wot/auth/login/?application_id="+$scope.appID+"&redirect_uri="+$scope.returnUrl);
+		}
+
+		//If an access_token already exists, use its data instead of getting a new one
+		if(window.localStorage.access_token) {
+			$scope.authToken = window.localStorage.access_token;
+			$scope.playername = window.localStorage.nickname;
+		}
+
+		//Static arrays
+		$scope.mastery = {0:'-', 1:'3rd Class', 2:'2nd Class', 3:'1st Class', 4:'Ace Tanker'};
+		$scope.masteryIcons = {0:'',1:'http://worldoftanks.com/static/2.26.0/encyclopedia/tankopedia/achievement/markofmastery1.png',
+								2:'http://worldoftanks.com/static/2.26.0/encyclopedia/tankopedia/achievement/markofmastery2.png',
+								3:'http://worldoftanks.com/static/2.26.0/encyclopedia/tankopedia/achievement/markofmastery3.png',
+								4:'http://worldoftanks.com/static/2.26.0/encyclopedia/tankopedia/achievement/markofmastery4.png'};
+		$scope.type = {'Heavy Tank':'H', 'Medium Tank':'M', 'Light Tank':'L', 'Tank Destroyer':'TD', 'SPG':'SPG'};
+
+		$scope.colorCoding = function(type, value) {
+			var className;
+			
+			if(type == 'winrate') {
+				if(value >= 65) return 'wr_super_unicum';
+				else if(value >= 60 && value < 65) return 'wr_unicum';
+				else if(value >= 56 && value < 60) return 'wr_great';
+				else if(value >= 54 && value < 56) return 'wr_very_good';
+				else if(value >= 52 && value < 54) return 'wr_good';
+				else if(value >= 50 && value < 52) return 'wr_above_average';
+				else if(value >= 48 && value < 50) return 'wr_average';
+				else if(value >= 47 && value < 48) return 'wr_below_average';
+				else if(value >= 46 && value < 47) return 'wr_basic';
+				else return 'wr_beginner';
+			}
+			else if(type == 'fragsperbattle') {
+				if(value >= 2) return 'fpb_unique';
+				else if(value >= 1.3 && value < 2) return 'fpb_very_good';
+				else if(value >= 1.0 && value < 1.3) return 'fpb_good';
+				else if(value >= 0.8 && value < 1.0) return 'fpb_normal';
+				else if(value >= 0.6 && value < 0.8) return 'fpb_bad';
+				else return 'fpb_very_bad';
+			}
+			else
+				return '';
+		}
+
+
+		// Temp search
+		$scope.search = function(item) {
+				//console.log('Search Name: '+$scope.searchText);
+				//console.log('Search Tier: '+$scope.searchTier);
+				//console.log('Search Type: '+$scope.searchType);
+
+				//Name search
+				if($scope.searchText != '' && typeof $scope.searchText != 'undefined') {
+					if(item.tankInfo.short_name_i18n.indexOf($scope.searchText) != -1) return true;
+					else return false;
+				}
+
+				//Tier search
+				if($scope.searchTier != '' && typeof $scope.searchTier != 'undefined') {
+					if(item.tankInfo.level == $scope.searchTier) return true;
+					else return false;
+				}
+
+				//Type search
+				if($scope.searchType != '' && typeof $scope.searchType != 'undefined') {
+					if($scope.type[item.tankInfo.type_i18n] == $scope.searchType) return true;
+					else return false;
+				}
+
+				return true;
+		};
+
+		// Resolve winratio
+		$scope.resolveWinRatio = function(battles, wins) {
+			return ((wins/battles)*100).toFixed(2);
+		}
+
+		// Resolves 'mark_of_mastery' to human readable
+		$scope.resolveMastery = function(mark_of_mastery) {
+			return $scope.mastery[mark_of_mastery];
+		}
+
+		// Resolves mastery icon
+		$scope.resolveMasteryIcon = function(mark_of_mastery) {
+			if(mark_of_mastery > 0)
+				return "http://worldoftanks.com/static/2.26.0/encyclopedia/tankopedia/achievement/markofmastery"+mark_of_mastery+".png";
+			return '';
+		}
+
+
+		// Resolves 'is_premium' on object
+		$scope.resolvePremium = function(premium) {
+			if(premium == true)
+				return 'Yes';
+			return ''; 
+		}
+
+		// Resolves tank type from long form to short form
+		$scope.resolveType = function(type) {
+			return $scope.type[type];
+		}
+
+
+		var tanksList = null;
+
+		/**
+		 * Complete Tank List NOT user specific
+		 * string application_id  = appID
+		 * return object JSON tankList
+		 */
+		$scope.getTankList = function() {
+			if(tanksList) return tanksList;
+
+			return tanksList = new Promise(function(resolve, reject) {
+				$http.get("https://api.worldoftanks.com/wot/encyclopedia/tanks/?application_id="+$scope.appID)
+				.success(function(response) {
+					$scope.tankList = response.data;
+					resolve($scope.tankList);
+				});
+			});
+		}
+
+		// Gets additional info for the current tank
+		$scope.getPlayerTankInfo = function(account_id, tank_id) {
+			return new Promise(function(resolve, reject) {
+				$http.get("https://api.worldoftanks.com/wot/account/tanks/?application_id="+$scope.appID+"&access_token="+$scope.authToken+"&account_id="+account_id+"&tank_id="+tank_id)
+				.success(function(response) {
+					$scope.playerTankInfo = response.data[account_id];
+					console.log($scope.playerTankInfo);
+					resolve($scope.playerTankInfo);
+				});
+			});
+		}
+
+		// Gets the players list of tanks currently in garage
+		/**
+		 * Complete list of players tanks in garage
+		 * string application_id = appID
+		 * string access_token = PLAYERS authToken
+		 * string account_id = PLAYERS account_id
+		 * bool in_garage = 1
+		 * return object JSON playerTankList
+		 */
+		$scope.playerTanks = function(account_id, tankList) {
+			return new Promise(function(resolve, reject) {
+				$http.get("https://api.worldoftanks.com/wot/tanks/stats/?application_id="+$scope.appID+"&access_token="+$scope.authToken+"&account_id="+account_id+"&in_garage=1")
+				.success(function(response) {
+					$scope.playerTankList = response.data[account_id];
+
+					for (var i = 0, max = $scope.playerTankList.length; i < max; ++i) {
+						var playerTank = $scope.playerTankList[i];
+						playerTank.tankInfo = tankList[playerTank.tank_id];
+					}
+
+					console.log('PLAYER TANK LIST');
+					console.log($scope.playerTankList);
+					resolve($scope.playerTankList);
+				});
+			});
+		}
+
+		// Gets a random tank out of their garage
+		$scope.randomTank = function() {
+
+			var tankList;
+			var playerTanksList;
+			var account_id;
+			var random;
+			var playerTankInfo;
+
+			$scope.pullPlayer().then(function(id_result) { 
+				account_id = id_result;
+				console.log('Pulled Player '+account_id);
+				return $scope.getTankList();
+			}).then(function(tankList_result) {
+				tankList = tankList_result;
+				console.log('Pulled General Tank List');
+				return $scope.playerTanks(account_id, tankList);
+			}).then(function(playerTanks_result) {
+				playerTanksList = playerTanks_result;
+				console.log('Pulled Players Tank List');
+
+				//console.log(playerTanksList);
+
+				var tlist = playerTanks_result;
+				//console.log(tlist);
+				random = tlist[Math.floor(Math.random()*tlist.length)];
+
+				console.log("RandomID: "+random.tank_id);
+				$scope.selectedTank = $scope.resolveTank(random.tank_id);
+				$scope.$apply();
+				console.log("Selected Tank");
+				console.log($scope.selectedTank);	
+
+				console.log("Player Tanks List");
+				console.log(playerTanksList);
+			}).then(function(playerTankInfo_result) {
+				playerTankInfo = playerTankInfo_result;
+				console.log($scope.playerTankInfo);
+				return $scope.getPlayerTankInfo(account_id, random.tank_id)
+			});	
+		}
+
+
+		/** Pulls player by their name
+		 * string application_id = appID
+		 * string search = player nickname
+		 * return object JSON data[nickname, account_id]
+		*/
+		$scope.pullPlayer = function() {
+			return new Promise(function(resolve, reject) {
+				$http.get("https://api.worldoftanks.com/wot/account/list/?application_id="+$scope.appID+"&search="+$scope.playername)
+				.success(function(response) {
+					$scope.account_id = response.data[0].account_id;
+					resolve($scope.account_id);
+				});
+			});
+		}
+
+
+
+		// Returns a tank object for a set tank id
+		$scope.resolveTank = function(tank_id) {
+			return $scope.tankList[tank_id];	
+		}
+		
+		$scope.getPlayerTankById = function(tank_id) {
+			if($scope.playerTankList) {
+				for(var i = 0, max = $scope.playerTankList.length; i < max; i++) {
+					if($scope.playerTankList[i].tank_id == tank_id)
+						return $scope.playerTankList[i];
+				}
+			}
+			else
+				return null;
+		}
+		
+		
+		//OLD
+		// Gets tank specific data for account
+		/*
+		$scope.pullTanks = function(account_id) {
+			return new Promise(function(resolve, reject) {
+				$http.get("https://api.worldoftanks.com/wot/account/tanks/?application_id="+$scope.appID+"&account_id="+account_id)
+				.success(function(response) {
+					alert(JSON.stringify(response.data[account_id]));
+					$scope.playerTankList = response.data[account_id];
+					resolve($scope.playerTankList);
+				});	
+			});
+		}
+		*/
+			
+	});
+	</script>
+</body>
+</html>
