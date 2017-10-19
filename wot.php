@@ -15,18 +15,18 @@
 
 class WOT {
 	
-	const APPID = '1f4885f3c3e0530a004dabb25013ba50';
-	const CLANID = '1000006814';
-	const NAPP = '1005084408';
-	const NAPP_ACCESS_TOKEN = 'b591b06dd0365c2e8a7dd7a98e1dd54f54f657fb';
+	const APPID = '';
+	const CLANID = '';
+	const NAPP = '';
+	const NAPP_ACCESS_TOKEN = '';
 	const NAPP_T = '10257';
 	const TANKLIST = NULL;
 	
 	//DB
-	const HOST = 'localhost';
-	const USER = 'mario';
-	const PASS = 'pwd4solid';
-	const DATABASE = 'mario';
+	const HOST = '';
+	const USER = '';
+	const PASS = '';
+	const DATABASE = '';
 	
 	//DB connection
 	public function db() {
